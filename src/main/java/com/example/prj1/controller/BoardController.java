@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -35,8 +36,8 @@ public class BoardController {
     // http://localhost:8080/board/list
 
     @GetMapping("list")
-    public String list(Model model) {
-        var result = boardService.list();
+    public String list(Model model, @RequestParam(defaultValue = "1") Integer page) {
+        var result = boardService.list(page);
         model.addAttribute("boardList", result);
         return "board/list";
     }

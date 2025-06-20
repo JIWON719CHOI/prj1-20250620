@@ -12,3 +12,12 @@ CREATE TABLE board
     CONSTRAINT pk_board PRIMARY KEY (id)
 );
 
+# 페이징 용 글 복사
+INSERT INTO board
+    (title, content, writer)
+SELECT title, content, writer
+FROM board;
+
+SELECT COUNT(*)
+FROM board;
+
