@@ -29,7 +29,7 @@ public class BoardController {
     @PostMapping("write")
     public String writePost(BoardForm data) {
         boardService.add(data);
-        return "board/write";
+        return "redirect:/board/list";
     }
 
     // http://localhost:8080/board/list
