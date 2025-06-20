@@ -1,7 +1,9 @@
-/* ✅ 전체 페이지에 적용할 기본 설정 */
+/* ============================= */
+/* ✅ 전체 페이지 기본 설정 */
+/* ============================= */
 body.custom-body {
-    background-color: #fff0f5; /* 연한 핑크 */
-    color: #4a004a;
+    background-color: #fff0f5; /* 연한 핑크 배경 */
+    color: #4a004a; /* 진한 보라 텍스트 */
     font-family: 'Hi Melody', cursive, sans-serif !important;
     padding: 30px 16px;
     max-width: 960px;
@@ -9,31 +11,57 @@ body.custom-body {
     line-height: 1.6;
 }
 
-/* ✅ 네비게이션 */
+/* ============================= */
+/* ✅ 네비게이션 바 */
+/* ============================= */
 .navbar {
-    background-color: #fff0f5;
+    background: linear-gradient(to right, #ffe4ec, #fff0f5);
     border-bottom: 2px solid #ff99cc;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+    font-family: inherit; /* 상속받도록 */
+    padding: 0.8rem 1rem;
+    border-radius: 2rem;
 }
 
 .navbar-brand {
+    font-size: 1.6rem;
     font-weight: bold;
-    color: #c71585 !important;
+    color: #d63384 !important;
+    text-shadow: 1px 1px 3px rgba(198, 21, 133, 0.3);
 }
 
 .navbar-nav .nav-link {
     color: #80004d !important;
     font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #ff3399 !important;
+    background-color: #ffb6d9;
+    color: white !important;
 }
 
-.navbar .container, .container-fluid {
-    max-width: 900px;
+/* 햄버거 버튼 스타일 */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-/* ✅ 제목 */
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28800, 0, 77, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* ============================= */
+/* ✅ 제목 스타일 */
+/* ============================= */
 h1, h3 {
     color: #c71585;
     text-shadow: 1px 1px 3px #f8bbd0;
@@ -41,79 +69,118 @@ h1, h3 {
     margin-bottom: 1rem;
 }
 
-/* ✅ 입력 요소 */
-/* 기본 상태: 흰색 배경 */
-.form-control, input[type="text"], textarea, select {
+/* ============================= */
+/* ✅ 입력 요소 (input, textarea, select) */
+/* ============================= */
+.form-control,
+input[type="text"],
+textarea,
+select {
     font-family: inherit;
     font-size: 1.05rem;
     border-radius: 0.5rem;
-    border: 2px solid #ff66b2;
     padding: 0.6rem 1rem;
-    background-color: #ffffff; /* ✅ 흰색 */
-    box-shadow: inset 0 2px 6px rgb(255 102 178 / 0.15);
+    background-color: #ffffff; /* 흰색 배경 */
+    box-shadow: inset 0 2px 6px rgba(255, 102, 178, 0.15);
     color: #660047;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 포커스 상태: 연핑크 배경 + 포커스 효과 */
-.form-control:focus, input[type="text"]:focus, textarea:focus, select:focus {
+.form-control:focus,
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
     outline: none;
     border-color: #c71585;
     box-shadow: 0 0 0 0.2rem rgba(199, 21, 133, 0.25);
 }
 
-/* ✅ 버튼 */
-.btn-pink, .btn.btn-pink {
-    background-color: #ff66b2;
-    color: white;
+/* ============================= */
+/* ✅ 버튼 스타일 */
+/* ============================= */
+.btn-pink {
+    background: linear-gradient(to right, #ffe4ec, #fff0f5);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+    color: #d63384 !important;
+    text-shadow: 1px 1px 3px rgba(198, 21, 133, 0.3);
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem 1.5rem;
-    box-shadow: 0 4px 10px rgba(255, 102, 178, 0.4);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-pink:hover {
     background-color: #c71585;
-    color: white;
 }
 
-/* ✅ 테이블 */
-table {
-    background-color: white;
-    font-size: 0.95rem;
+/* ============================= */
+/* ✅ 테이블 스타일 */
+/* ============================= */
+.table {
+    background-color: #fff0f5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(255, 102, 178, 0.2);
+    font-family: inherit;
 }
 
-thead tr th {
-    background-color: #ff66b2;
-    color: white;
+.table thead {
+    background: linear-gradient(to right, #ffe4ec, #fff0f5);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+    border-bottom: 2px solid #ff99cc;
+}
+
+.table thead th {
+    background: transparent;
+    color: #d63384 !important;
+    text-shadow: 1px 1px 3px rgba(198, 21, 133, 0.3);
+    font-weight: 700;
     text-align: center;
-    font-weight: bold;
+    border-bottom: none;
+    padding: 12px 16px;
+    font-size: 1rem;
 }
 
-tbody tr:hover {
-    background-color: #ffccdd;
+.table tbody tr {
+    background-color: white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
-tbody tr td {
+.table tbody tr:hover {
+    background-color: #ffe0ed;
+}
+
+.table td {
+    padding: 12px 16px;
     color: #660047;
+    vertical-align: middle;
+    border-top: 1px solid #ffd6e8;
 }
 
-tbody tr td a {
+.table td a {
     color: #80004d;
     font-weight: bold;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-tbody tr td a:hover {
-    color: #ff1a75;
+.table td a:hover {
+    color: #ff3399;
     text-decoration: underline;
 }
 
-/* ✅ 페이지네이션 */
+/* ============================= */
+/* ✅ 페이지네이션 스타일 */
+/* ============================= */
 .pagination a {
     color: #cc0066;
     text-decoration: none;
     margin: 0 6px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .pagination .active {
@@ -121,4 +188,13 @@ tbody tr td a:hover {
     background-color: #ff3399;
     padding: 4px 8px;
     border-radius: 6px;
+}
+
+/* ============================= */
+/* ✅ 공통 transition 설정 (필요 시 추가) */
+/* ============================= */
+.navbar-nav .nav-link,
+.btn-pink,
+.table td a {
+    transition: color 0.3s ease, background-color 0.3s ease;
 }

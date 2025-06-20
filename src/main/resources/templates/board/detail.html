@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/main::commonHead(|${board.id}번 게시물|)}">
+<head th:replace="~{fragments/main::commonHead('🩷' + ${board.id} + '번 게시물')}">
     <meta charset="UTF-8">
     <title>게시글 상세</title>
 
@@ -21,7 +21,7 @@
 
 <!-- 목록으로 돌아가기 -->
 <a th:href="@{/board/list}">
-    <button class="btn btn-pink">📃 목록으로</button>
+    <button class="btn-pink">📃 목록으로</button>
 </a>
 <div th:replace="~{fragments/main :: commonScript}"></div>
 </body>
