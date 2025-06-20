@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{layout/main::commonHead('게시판')}">
     <meta charset="UTF-8">
     <title>게시판</title>
-    <link rel="stylesheet" href="/css/pink.css">
-
-    <!-- ✅ Hi Melody 폰트 로딩 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 
 </head>
 <body>
 <a th:href="@{/board/write}">
-    <button>💗 새 글 쓰기</button>
+    <button type="button" class="btn btn-danger mb-3">💗 새 글 쓰기</button>
 </a>
 
-<h1>🎀 게시판 목록</h1>
+<h1 class="mb-4">🎀 게시판 목록</h1>
 
-<form th:action="@{/board/list}" method="get">
-    <label>🔍 검색:
-        <input type="text" name="keyword" placeholder="제목+작성자" th:value="${param.keyword}">
-    </label>
-    <button>검색</button>
+<form th:action="@{/board/list}" method="get" class="mb-3 d-flex align-items-center gap-2">
+    <label class="form-label mb-0 me-2">🔍 검색:</label>
+    <input type="text" name="keyword" class="form-control w-auto" placeholder="제목+작성자" th:value="${param.keyword}">
+    <button type="submit" class="btn btn-pink px-4">검색</button>
 </form>
 
-<br>
-
-<table>
-    <thead>
+<table class="table table-hover table-bordered rounded shadow-sm">
+    <thead class="table-danger">
     <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일시</th>
+        <th scope="col">번호</th>
+        <th scope="col">제목</th>
+        <th scope="col">작성자</th>
+        <th scope="col">작성일시</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="board : ${boardList}">
+    <tr th:each="board : ${boardList}" style="cursor: pointer;">
         <td th:text="${board.id}"></td>
         <td>
-            <a th:href="@{/board/detail(id=${board.id})}" th:text="${board.title}"></a>
+            <a th:href="@{/board/detail(id=${board.id})}" th:text="${board.title}"
+               class="text-decoration-none text-dark"></a>
         </td>
         <td th:text="${board.writer}"></td>
         <td th:text="${board.createdAt}"></td>
@@ -48,19 +40,37 @@
     </tbody>
 </table>
 
-<div class="pagination">
-    <a th:href="@{/board/list(page=1, keyword=${param.keyword})}">«</a>
-    <a th:href="@{/board/list(page=${prevPage}, keyword=${param.keyword})}">‹</a>
+<div class="pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 
-    <span th:each="num : ${#numbers.sequence(leftPage, rightPage)}">
-        <a th:href="@{/board/list(page=${num}, keyword=${param.keyword})}"
-           th:text="${num}"
-           th:classappend="${num == param.page} ? 'active' : ''"></a>
-    </span>
+    <!-- 왼쪽: 페이지 이동 링크 -->
+    <div>
+        <!-- 처음 페이지로 이동 -->
+        <a th:href="@{/board/list(page=1, keyword=${param.keyword})}">«</a>
 
-    <a th:href="@{/board/list(page=${nextPage}, keyword=${param.keyword})}">›</a>
-    <a th:href="@{/board/list(page=${lastPage}, keyword=${param.keyword})}">»</a>
+        <!-- 이전 블록으로 이동 -->
+        <a th:href="@{/board/list(page=${prevPage}, keyword=${param.keyword})}">‹</a>
+
+        <!-- 현재 블록의 페이지 목록 -->
+        <span th:each="num : ${#numbers.sequence(leftPage, rightPage)}">
+            <a th:href="@{/board/list(page=${num}, keyword=${param.keyword})}"
+               th:text="${num}"
+               th:classappend="${num == param.page} ? 'active' : ''"
+               style="margin: 0 4px;"></a>
+        </span>
+
+        <!-- 다음 블록으로 이동 -->
+        <a th:href="@{/board/list(page=${nextPage}, keyword=${param.keyword})}">›</a>
+
+        <!-- 마지막 페이지로 이동 -->
+        <a th:href="@{/board/list(page=${lastPage}, keyword=${param.keyword})}">»</a>
+    </div>
+
+    <!-- 오른쪽: 현재 페이지 정보 -->
+    <div style="font-size: 0.9rem; color: #666;">
+        <span th:text="'현재 페이지: ' + (${param.page} != null ? ${param.page} : 1) + ' / 총 ' + ${lastPage}"></span>
+    </div>
 </div>
-</body>
 
+<th:block th:replace="~{layout/main::commonScript}"/>
+</body>
 </html>

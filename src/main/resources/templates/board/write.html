@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{layout/main::commonHead('작성')}">
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/css/pink.css">
-
-    <!-- ✅ Hi Melody 폰트 로딩 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
-
+    <title>작성</title>
 </head>
 <body>
 <a th:href="@{/board/list}">
@@ -50,7 +43,6 @@
         <button>🌸 저장하기</button>
     </div>
 </form>
+<th:block th:replace="~{layout/main::commonScript}"/>
 </body>
-
-
 </html>

@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="~{layout/main::commonHead(|${board.id}번 게시물|)}">
     <meta charset="UTF-8">
     <title>게시글 상세</title>
-    <link rel="stylesheet" href="/css/pink.css">
-
-    <!-- ✅ Hi Melody 폰트 로딩 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -22,13 +16,13 @@
     <strong>작성일:</strong>
     <span th:text="${board.createdAt}">date</span>
 </p>
-<hr>
+<hr class="hr-pink">
 <p th:text="${board.content}">본문</p>
 
 <!-- 목록으로 돌아가기 -->
 <a th:href="@{/board/list}">
     <button>📃 목록으로</button>
 </a>
-
+<th:block th:replace="~{layout/main::commonScript}"/>
 </body>
 </html>
