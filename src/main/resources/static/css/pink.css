@@ -1,69 +1,106 @@
-body {
+/* ✅ 전체 페이지에 적용할 기본 설정 */
+body.custom-body {
     background-color: #fff0f5; /* 연한 핑크 */
-    color: #4a004a; /* 진한 보라 */
-    font-family: 'Hi Melody', 'Nanum Pen Script', 'Noto Sans KR', 'Comic Sans MS', cursive, sans-serif;
-    margin: 30px auto;
-    max-width: 900px; /* 최대 너비 지정 */
-    padding: 0 20px; /* 좌우 여백 */
+    color: #4a004a;
+    font-family: 'Hi Melody', cursive, sans-serif !important;
+    padding: 30px 16px;
+    max-width: 960px;
+    margin: 0 auto;
     line-height: 1.6;
 }
 
-.hr-pink {
-    border: none;
-    border-top: 1px solid #ff66b2;
+/* ✅ 네비게이션 */
+.navbar {
+    background-color: #fff0f5;
+    border-bottom: 2px solid #ff99cc;
 }
 
+.navbar-brand {
+    font-weight: bold;
+    color: #c71585 !important;
+}
+
+.navbar-nav .nav-link {
+    color: #80004d !important;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff3399 !important;
+}
+
+.navbar .container, .container-fluid {
+    max-width: 900px;
+}
+
+/* ✅ 제목 */
 h1, h3 {
-    color: #c71585; /* 딥핑크 */
+    color: #c71585;
     text-shadow: 1px 1px 3px #f8bbd0;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 15px;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
+/* ✅ 입력 요소 */
+/* 기본 상태: 흰색 배경 */
+.form-control, input[type="text"], textarea, select {
+    font-family: inherit;
+    font-size: 1.05rem;
+    border-radius: 0.5rem;
+    border: 2px solid #ff66b2;
+    padding: 0.6rem 1rem;
+    background-color: #ffffff; /* ✅ 흰색 */
+    box-shadow: inset 0 2px 6px rgb(255 102 178 / 0.15);
+    color: #660047;
+}
+
+/* 포커스 상태: 연핑크 배경 + 포커스 효과 */
+.form-control:focus, input[type="text"]:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #c71585;
+    box-shadow: 0 0 0 0.2rem rgba(199, 21, 133, 0.25);
+}
+
+/* ✅ 버튼 */
+.btn-pink, .btn.btn-pink {
+    background-color: #ff66b2;
+    color: white;
+    font-weight: bold;
+    border-radius: 2rem;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 4px 10px rgba(255, 102, 178, 0.4);
+}
+
+.btn-pink:hover {
+    background-color: #c71585;
+    color: white;
+}
+
+/* ✅ 테이블 */
 table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 6px; /* 행간은 약간 유지 */
-    background-color: transparent;
-    font-size: 0.95rem; /* 폰트 크기 살짝 작게 */
+    background-color: white;
+    font-size: 0.95rem;
 }
 
 thead tr th {
     background-color: #ff66b2;
     color: white;
-    padding: 8px 14px; /* 패딩 줄임 */
-    font-weight: 700;
     text-align: center;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 4px 8px rgb(255 102 178 / 0.3);
-}
-
-tbody tr {
-    background: #ffd1e8;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgb(204 0 102 / 0.25);
-    transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 tbody tr:hover {
-    background-color: #ff99cc;
-    box-shadow: 0 4px 14px rgb(204 0 102 / 0.5);
-    cursor: pointer;
+    background-color: #ffccdd;
 }
 
 tbody tr td {
-    padding: 8px 14px; /* 패딩 줄임 */
     color: #660047;
-    font-weight: 500;
-    border-bottom: none;
 }
 
 tbody tr td a {
     color: #80004d;
-    font-weight: 700;
+    font-weight: bold;
     text-decoration: none;
-    transition: color 0.25s ease;
 }
 
 tbody tr td a:hover {
@@ -71,48 +108,7 @@ tbody tr td a:hover {
     text-decoration: underline;
 }
 
-input, textarea {
-    width: 100%;
-    max-width: 350px;
-    padding: 10px 14px;
-    margin-top: 6px;
-    margin-bottom: 14px;
-    border: 2.5px solid #ff66b2;
-    border-radius: 14px;
-    font-family: inherit;
-    font-size: 1.1rem;
-    color: #660047;
-    background-color: #fff0f5;
-    box-shadow: inset 0 2px 8px rgb(255 102 178 / 0.15);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-input:focus, textarea:focus {
-    border-color: #c71585;
-    box-shadow: inset 0 2px 12px rgb(199 21 133 / 0.35);
-    outline: none;
-}
-
-button {
-    background-color: #ff66b2;
-    color: white;
-    font-family: inherit;
-    font-weight: 800;
-    font-size: 1.25rem;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 24px;
-    box-shadow: 0 6px 14px rgb(255 102 178 / 0.45);
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-button:hover {
-    background-color: #c71585;
-    box-shadow: 0 8px 20px rgb(199 21 133 / 0.7);
-}
-
-
+/* ✅ 페이지네이션 */
 .pagination a {
     color: #cc0066;
     text-decoration: none;

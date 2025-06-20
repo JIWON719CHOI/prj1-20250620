@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="commonHead(title)">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">My Site</title>
+    <!-- 폰트 로드 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- 커스텀 CSS (부트스트랩 이후에 꼭 불러오기) -->
+    <link rel="stylesheet" href="/css/pink.css"/>
+</head>
+<body class="custom-body">
+
+<!-- ✅ 네브바 프래그먼트 -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#">🏠 LOGO</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/board/list}">목록</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/board/write}">글쓰기</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <!-- 컨텐츠는 여기 넣기 -->
+</div>
+
+<!-- ✅ 공통 JS 스크립트 -->
+<th:block th:fragment="commonScript">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+            crossorigin="anonymous"></script>
+</th:block>
+
+</body>
+</html>

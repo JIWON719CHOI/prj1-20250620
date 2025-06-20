@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/main::commonHead(|${board.id}번 게시물|)}">
+<head th:replace="~{fragments/main::commonHead(|${board.id}번 게시물|)}">
     <meta charset="UTF-8">
     <title>게시글 상세</title>
 
 </head>
-<body>
-
+<body class="custom-body">
+<div th:replace="~{fragments/main :: navbar}"></div>
 <h2 th:text="${board.title}">제목</h2>
 <p>
     <strong>작성자:</strong>
@@ -21,8 +21,8 @@
 
 <!-- 목록으로 돌아가기 -->
 <a th:href="@{/board/list}">
-    <button>📃 목록으로</button>
+    <button class="btn btn-pink">📃 목록으로</button>
 </a>
-<th:block th:replace="~{layout/main::commonScript}"/>
+<div th:replace="~{fragments/main :: commonScript}"></div>
 </body>
 </html>
