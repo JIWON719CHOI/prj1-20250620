@@ -34,4 +34,7 @@ public class BoardService {
         return boardRepository.findByTitleContaining(keyword, pageable); // Page<Board> 반환
     }
 
+    public Board get(Integer id) {
+        return boardRepository.findById(id).orElseThrow();
+    }
 }

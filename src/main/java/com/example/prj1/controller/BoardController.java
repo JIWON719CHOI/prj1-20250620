@@ -73,5 +73,14 @@ public class BoardController {
         return "board/list";
     }
 
+//    http://localhost:8080/board/detail?id=4
+
+    @GetMapping("detail")
+    public String detail(@RequestParam("id") Integer id, Model model) {
+        var board = boardService.get(id);
+        model.addAttribute("board", board);
+        return "board/detail";
+    }
+
 
 }
