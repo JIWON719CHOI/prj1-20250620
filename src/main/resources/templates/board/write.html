@@ -3,27 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/pink.css">
+
+    <!-- ✅ Hi Melody 폰트 로딩 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<h2>게시물 작성</h2>
+<a th:href="@{/board/list}">
+    <button>📃 목록으로</button>
+</a>
+
+<h1>💝 게시물 작성</h1>
 
 <form th:action="@{/board/write}" method="post">
     <div>
-        <label for="titleInput">제목</label>
-        <input type="text" id="titleInput" name="title">
+        <label>제목</label>
+        <br>
+        <label>
+            <input type="text" name="title">
+        </label>
     </div>
+    <br>
+
     <div>
-        <label for="contentTextArea">본문</label>
-        <textarea id="contentTextArea" name="content"></textarea>
+        <label>본문</label>
+        <br>
+        <label>
+            <textarea name="content" placeholder="10000자 이내" rows="10" cols="50"></textarea>
+        </label>
     </div>
+    <br>
+
     <div>
-        <label for="writerInput">작성자</label>
-        <input type="text" id="writerInput" name="writer">
+        <label>작성자</label>
+        <br>
+        <label>
+            <input type="text" name="writer">
+        </label>
     </div>
+    <br>
+
     <div>
-        <button>저장</button>
+        <button>🌸 저장하기</button>
     </div>
 </form>
-
 </body>
+
+
 </html>

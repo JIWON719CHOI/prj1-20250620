@@ -1,0 +1,72 @@
+
+body {
+    background-color: #ffe6f0;
+    color: #4d004d;
+    font-family: 'Hi Melody', 'Nanum Pen Script', 'Noto Sans KR', 'Comic Sans MS', cursive, sans-serif;
+    margin: 20px;
+}
+
+h1, h3 {
+    color: #ff3399;
+    text-shadow: 1px 1px 2px #ffcce6;
+}
+
+table {
+    width: 100%;
+    border: 2px solid #ff99cc;
+    background-color: #fff0f5;
+    color: #660033;
+    border-radius: 10px;
+}
+
+th, td {
+    border: 1px solid #ff99cc;
+    padding: 10px;
+    text-align: center;
+}
+
+input, textarea {
+    background-color: #fff;
+    border: 2px solid #ff99cc;
+    color: #660033;
+    padding: 8px;
+    border-radius: 8px;
+    width: 300px;
+    font-family: 'Hi Melody', serif;
+}
+
+button {
+    background-color: #ff66b2;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 0 5px #ff99cc;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Hi Melody', serif;
+}
+
+button:hover {
+    background-color: #ff3385;
+    box-shadow: 0 0 10px #ff66b2;
+}
+
+.pagination a {
+    color: #cc0066;
+    text-decoration: none;
+    margin: 0 6px;
+    font-weight: bold;
+}
+
+.pagination .active {
+    color: #fff;
+    background-color: #ff3399;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+form {
+    margin-top: 16px;
+}

@@ -2,15 +2,35 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시판</title>
+    <link rel="stylesheet" href="/css/pink.css">
+
+    <!-- ✅ Hi Melody 폰트 로딩 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<h2>게시물 목록</h2>
-<!--table>thead>tr>th*4^^tbody>tr>td*4-->
+<a th:href="@{/board/write}">
+    <button>💗 새 글 쓰기</button>
+</a>
+
+<h1>🎀 게시판 목록</h1>
+
+<form th:action="@{/board/list}" method="get">
+    <label>🔍 검색:
+        <input type="text" name="keyword" placeholder="제목+작성자" th:value="${param.keyword}">
+    </label>
+    <button>검색</button>
+</form>
+
+<br>
+
 <table>
     <thead>
     <tr>
-        <th>#</th>
+        <th>번호</th>
         <th>제목</th>
         <th>작성자</th>
         <th>작성일시</th>
@@ -26,5 +46,19 @@
     </tbody>
 </table>
 
+<div class="pagination">
+    <a th:href="@{/board/list(page=1, keyword=${param.keyword})}">«</a>
+    <a th:href="@{/board/list(page=${prevPage}, keyword=${param.keyword})}">‹</a>
+
+    <span th:each="num : ${#numbers.sequence(leftPage, rightPage)}">
+        <a th:href="@{/board/list(page=${num}, keyword=${param.keyword})}"
+           th:text="${num}"
+           th:classappend="${num == param.page} ? 'active' : ''"></a>
+    </span>
+
+    <a th:href="@{/board/list(page=${nextPage}, keyword=${param.keyword})}">›</a>
+    <a th:href="@{/board/list(page=${lastPage}, keyword=${param.keyword})}">»</a>
+</div>
 </body>
+
 </html>
