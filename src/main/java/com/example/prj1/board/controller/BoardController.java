@@ -1,5 +1,6 @@
 package com.example.prj1.board.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import com.example.prj1.board.dto.BoardForm;
@@ -8,6 +9,7 @@ import com.example.prj1.board.service.BoardService;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,16 @@ public class BoardController {
     }
 
     @PostMapping("write")
-    public String writePost(BoardForm data, RedirectAttributes rttr) {
+    public String writePost(@Valid BoardForm data,
+                            BindingResult bindingResult, RedirectAttributes rttr) {
+        if (bindingResult.hasErrors()) {
+            // 유효성 실패 -> 에러 메시지를 flash에 담아서 다시 폼으로
+            rttr.addFlashAttribute("errors", bindingResult.getAllErrors());
+            rttr.addFlashAttribute("alert",
+                    Map.of("code", "danger", "message", "필수 항목을 모두 입력해주세요."));
+            return "redirect:/board/write";
+        }
+
         boardService.add(data);
         rttr.addFlashAttribute("alert",
                 Map.of("code", "primary", "message", "새 게시물이 등록되었습니다."));

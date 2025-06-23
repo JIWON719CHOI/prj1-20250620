@@ -64,6 +64,19 @@
         }
         /*]]>*/
     </script>
+    <!--유효성 검사 스크립트-->
+    <script>
+        document.getElementById("writeForm").addEventListener("submit", function (e) {
+            const title = this.title.value.trim();
+            const writer = this.writer.value.trim();
+            const content = this.content.value.trim();
+
+            if (!title || !writer || !content) {
+                e.preventDefault(); // 서버 전송 막기
+                alert("모든 필드를 입력해주세요!");
+            }
+        });
+    </script>
 </th:block>
 </body>
 </html>

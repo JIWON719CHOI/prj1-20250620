@@ -9,7 +9,7 @@
 
 <h1>📝 게시물 작성</h1>
 
-<form th:action="@{/board/write}" method="post">
+<form id="writeForm" th:action="@{/board/write}" method="post">
 
     <div class="mb-3">
         <label>제목</label>
@@ -30,6 +30,12 @@
         <button class="btn-pink">💾 저장하기</button>
     </div>
 </form>
+<!-- 에러 메시지 표시 (선택) -->
+<div th:if="${errors != null}">
+    <ul>
+        <li th:each="e : ${errors}" th:text="${e.defaultMessage}" class="text-danger"></li>
+    </ul>
+</div>
 <!-- 공통 스크립트 불러오기 -->
 <th:block th:replace="~{fragments/main::commonScript}"/>
 </body>
