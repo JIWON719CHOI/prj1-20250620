@@ -12,17 +12,29 @@ body.custom-body {
 }
 
 /* ============================= */
-/* ✅ 네비게이션 바 */
+/* ✅ 콘텐츠를 감싸는 하얀 박스 */
+/* ============================= */
+.content-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.2);
+    margin-bottom: 2rem;
+}
+
+/* ============================= */
+/* ✅ 네비게이션 바 스타일 */
 /* ============================= */
 .navbar {
     background: linear-gradient(to right, #ffe4ec, #fff0f5);
     border-bottom: 2px solid #ff99cc;
     box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
-    font-family: inherit; /* 상속받도록 */
+    font-family: inherit;
     padding: 0.8rem 1rem;
     border-radius: 2rem;
 }
 
+/* 로고 */
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: bold;
@@ -30,6 +42,7 @@ body.custom-body {
     text-shadow: 1px 1px 3px rgba(198, 21, 133, 0.3);
 }
 
+/* 네비게이션 메뉴 항목 */
 .navbar-nav .nav-link {
     color: #80004d !important;
     font-weight: 600;
@@ -43,11 +56,16 @@ body.custom-body {
     color: white !important;
 }
 
-/* 햄버거 버튼 스타일 */
+/* 🍔 햄버거 버튼 (이모지 스타일용) */
 .navbar-toggler {
+    font-size: 1.5rem;
+    padding: 0.25rem 0.75rem;
+    background: none;
     border: none;
-    outline: none;
     box-shadow: none;
+    margin-left: 1rem; /* 로고랑 공간 확보 */
+    color: #80004d;
+    cursor: pointer;
 }
 
 .navbar-toggler:focus {
@@ -55,8 +73,9 @@ body.custom-body {
     box-shadow: none;
 }
 
+/* ❌ 더 이상 필요 없음: 기본 아이콘 삭제 */
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28800, 0, 77, 0.8%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    display: none;
 }
 
 /* ============================= */
@@ -106,13 +125,31 @@ select:focus {
     font-weight: bold;
     border-radius: 2rem;
     padding: 0.5rem 1.5rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
 }
 
 .btn-pink:hover {
-    background-color: #c71585;
+    background: linear-gradient(to right, #ff69b4, #ffb6c1) !important; /* 핫핑크~라이트핑크 */
+    color: white !important;
+    box-shadow: 0 6px 14px rgba(255, 105, 180, 0.6) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-pink:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(255, 105, 180, 0.4);
+}
+
+a.btn-pink {
+    text-decoration: none; /* 밑줄 제거 */
+    display: inline-block; /* 버튼처럼 보이게 */
+}
+
+a.btn-pink:hover {
+    text-decoration: none;
 }
 
 /* ============================= */

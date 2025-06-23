@@ -1,0 +1,55 @@
+<!-- templates/fragments/alert-modal.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- 🔔삭제 모달 -->
+<div th:fragment="removeModal">
+    <form id="removeForm" th:action="@{/board/remove}" method="post">
+        <div class="modal fade" id="removeModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">삭제 확인</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">삭제 하시겠습니까?</div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" th:value="${board.id}">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="submit" class="btn btn-danger">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 🔔 알림 모달 -->
+<div th:fragment="alertModal">
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" th:classappend="'bg-' + ${alert?.code}">
+                    <h5 class="modal-title text-white">알림</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p th:text="${alert?.message}">알림 메시지</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS (필수) -->
+<th:block th:fragment="commonScript">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+            crossorigin="anonymous"></script>
+</th:block>
+</body>
+</html>

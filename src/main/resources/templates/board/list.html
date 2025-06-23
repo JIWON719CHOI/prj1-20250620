@@ -28,7 +28,7 @@
     </div>
 </form>
 
-
+<!--📔 목록 표-->
 <table class="table table-hover rounded shadow-sm">
     <thead>
     <tr>
@@ -50,7 +50,7 @@
     </tbody>
 </table>
 
-
+<!--📜 페이지네이션-->
 <div class="pagination" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
 
     <!-- 왼쪽: 페이지 이동 링크 -->
@@ -82,6 +82,12 @@
     </div>
 </div>
 
-<div th:replace="~{fragments/main :: commonScript}"></div>
+<!-- 🔔 알림 모달 -->
+<th:block th:if="${alert != null}">
+    <div th:replace="~{fragments/alert-modal :: alertModal}"></div>
+</th:block>
+
+<!-- 공통 스크립트 불러오기 -->
+<th:block th:replace="~{fragments/main::commonScript}"/>
 </body>
 </html>

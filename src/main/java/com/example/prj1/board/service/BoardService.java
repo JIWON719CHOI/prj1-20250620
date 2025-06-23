@@ -1,7 +1,8 @@
-package com.example.prj1.service;
+package com.example.prj1.board.service;
 
-import com.example.prj1.entity.Board;
-import com.example.prj1.repo.BoardRepository;
+import com.example.prj1.board.dto.BoardDto;
+import com.example.prj1.board.entity.Board;
+import com.example.prj1.board.repo.BoardRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +12,7 @@ import org.springframework.data.domain.Sort;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.prj1.dto.BoardForm;
+import com.example.prj1.board.dto.BoardForm;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,12 +66,30 @@ public class BoardService {
         return result;
     }
 
-    public Board get(Integer id) {
-        return boardRepository.findById(id).orElseThrow();
+    public BoardDto get(Integer id) {
+        Board board = boardRepository.findById(id).get();
+        BoardDto dto = new BoardDto();
+        dto.setId(board.getId());
+        dto.setTitle(board.getTitle());
+        dto.setContent(board.getContent());
+        dto.setWriter(board.getWriter());
+        dto.setCreatedAt(board.getCreatedAt());
+        return dto;
     }
-
 
     public void remove(Integer id) {
         boardRepository.deleteById(id);
+    }
+
+    public void update(BoardForm data) {
+        // 조회
+        Board board = boardRepository.findById(data.getId()).get();
+        // 수정
+        board.setTitle(data.getTitle());
+        board.setContent(data.getContent());
+        board.setWriter(data.getWriter());
+
+        // 저장
+        boardRepository.save(board);
     }
 }

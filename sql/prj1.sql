@@ -21,3 +21,14 @@ FROM board;
 SELECT COUNT(*)
 FROM board;
 
+# 회원 정보
+CREATE TABLE member
+(
+    id         VARCHAR(255) NOT NULL,
+    password   VARCHAR(255) NULL,
+    nick_name  VARCHAR(255) NULL,
+    info       VARCHAR(255) NULL,
+    created_at datetime     NULL,
+    CONSTRAINT pk_member PRIMARY KEY (id)
+);
+

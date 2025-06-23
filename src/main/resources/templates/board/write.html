@@ -1,46 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/main::commonHead('💝 게시물 작성')}">
+<head th:replace="~{fragments/main::commonHead('📝 게시물 작성')}">
     <meta charset="UTF-8">
-    <title>💝 게시물 작성</title>
+    <title>📝 게시물 작성</title>
 </head>
 <body class="custom-body">
 <div th:replace="~{fragments/main :: navbar}"></div>
 
-<h1>💝 게시물 작성</h1>
+<h1>📝 게시물 작성</h1>
 
 <form th:action="@{/board/write}" method="post">
-    <div>
+
+    <div class="mb-3">
         <label>제목</label>
-        <br>
-        <label>
-            <input class="form-control" type="text" name="title">
-        </label>
+        <input class="form-control" type="text" name="title">
     </div>
-    <br>
 
-    <div>
+    <div class="mb-3">
         <label>본문</label>
-        <br>
-        <label>
-            <textarea class="form-control" name="content" placeholder="10000자 이내" rows="10" cols="50"></textarea>
-        </label>
+        <textarea class="form-control" name="content" rows="10" cols="50" placeholder="10000자 이내"></textarea>
     </div>
-    <br>
 
-    <div>
+    <div class="mb-3">
         <label>작성자</label>
-        <br>
-        <label>
-            <input class="form-control" type="text" name="writer">
-        </label>
+        <input class="form-control" type="text" name="writer">
     </div>
-    <br>
 
     <div>
-        <button class="btn btn-pink">🌸 저장하기</button>
+        <button class="btn-pink">💾 저장하기</button>
     </div>
 </form>
-<div th:replace="~{fragments/main :: commonScript}"></div>
+<!-- 공통 스크립트 불러오기 -->
+<th:block th:replace="~{fragments/main::commonScript}"/>
 </body>
 </html>
