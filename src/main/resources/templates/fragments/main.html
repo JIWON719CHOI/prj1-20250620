@@ -17,37 +17,44 @@
 <body class="custom-body">
 
 <!-- ✅ 네브바 프래그먼트 -->
-<nav th:fragment="navbar" class="navbar navbar-expand-lg shadow-sm mb-4">
-    <div class="container">
-        <!-- 로고 -->
-        <a class="navbar-brand" th:href="@{/}">🏠 MySite</a>
+<div th:fragment="navbar" class="navbar navbar-expand-lg shadow-sm mb-4">
+    <nav>
+        <div class="container">
+            <!-- 로고 -->
+            <a class="navbar-brand" th:href="@{/}">🏠 MySite</a>
 
-        <!-- 모바일용 토글 버튼 -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- 모바일용 토글 버튼 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <!-- 메뉴 항목들 -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/board/list}">🎀 게시판 목록</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/board/write}">📝 글쓰기</a>
-                </li>
-            </ul>
+            <!-- 메뉴 항목들 -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/board/list}">🎀 게시판 목록</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/board/write}">📝 글쓰기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div th:if="${alert != null}" class="container mb-4">
+        <div class="row">
+            <div class="col">
+                <div th:text="${alert.message}" th:classappend="|alert-${alert.code}|" class="alert" role="alert">
+                    A simple primary alert—check it out!
+                </div>
+            </div>
         </div>
     </div>
-</nav>
-
-
-<div class="container">
-    <!-- 컨텐츠는 여기 넣기 -->
 </div>
 
-<!-- ✅ 공통 JS 스크립트 -->
+<!-- ✅ 공통 JS -->
 <th:block th:fragment="commonScript">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             crossorigin="anonymous"></script>

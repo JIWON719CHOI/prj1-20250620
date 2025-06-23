@@ -69,4 +69,8 @@ public class BoardService {
         return boardRepository.findById(id).orElseThrow();
     }
 
+
+    public void remove(Integer id) {
+        boardRepository.deleteById(id);
+    }
 }
