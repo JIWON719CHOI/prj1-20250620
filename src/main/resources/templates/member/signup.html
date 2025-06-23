@@ -5,48 +5,58 @@
     <title>Title</title>
 </head>
 <body class="custom-body">
+
+<!-- ✅ 네비게이션 바 -->
 <div th:replace="~{fragments/main :: navbar}"></div>
-<!--.container>.row.justify-content-center>.col.col-lg-6>h2.mb-3{회원 가입}-->
+
+<!-- ✅ 회원가입 폼 -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col col-lg-6">
-            <h1 class="mb-4">👤 회원 가입</h1>
-            <!--            form.mb-3>div.mb-3*5>label+input-->
-            <form th:action="@{/member/signup}" method="post" class="mb-3">
-                <div class="mb-3">
-                    <label class="form-label" for="inputId">아이디</label>
-                    <input th:value="${member == null ? '' : member.id}" class="form-control" type="text" id="inputId"
-                           name="id">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="inputPassword">암호</label>
-                    <input th:value="${member == null ? '' : member.password}" class="form-control" type="password"
-                           id="inputPassword"
-                           name="password">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="inputNickName">별명</label>
-                    <input th:value="${member == null ? '' : member.nickName}" class="form-control" type="text"
-                           id="inputNickName"
-                           name="nickName">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="textareaInfo">자기소개</label>
-                    <textarea th:text="${member == null ? '' : member.info}" class="form-control" rows="3" name="info"
-                              id="textareaInfo"></textarea>
-                </div>
-                <div class="mb-3">
-                    <button class="btn-custom">가입</button>
-                </div>
-            </form>
+        <div class="col-lg-6">
+            <div class="content-box">
+                <h1 class="mb-4">👤 회원 가입</h1>
+
+                <form th:action="@{/member/signup}" method="post" class="mb-3">
+                    <div class="form-group">
+                        <label class="form-label" for="inputId">아이디 ※필수입력</label>
+                        <input class="form-control" type="text" id="inputId" name="id"
+                               th:value="${member == null ? '' : member.id}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inputPassword">암호 ※필수입력</label>
+                        <input class="form-control" type="password" id="inputPassword" name="password"
+                               th:value="${member == null ? '' : member.password}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="inputNickName">별명 ※필수입력</label>
+                        <input class="form-control" type="text" id="inputNickName" name="nickName"
+                               th:value="${member == null ? '' : member.nickName}"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="textareaInfo">자기소개</label>
+                        <textarea class="form-control" id="textareaInfo" name="info" rows="3"
+                                  th:text="${member == null ? '' : member.info}"></textarea>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button class="btn-custom" type="submit">가입</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
 <!-- 🔔 알림 모달 -->
 <th:block th:if="${alert != null}">
     <div th:replace="~{fragments/alert-modal :: alertModal}"></div>
 </th:block>
-<!-- 공통 스크립트 불러오기 -->
+
+<!-- 📘 공통 스크립트 -->
 <th:block th:replace="~{fragments/main::commonScript}"/>
+
 </body>
 </html>

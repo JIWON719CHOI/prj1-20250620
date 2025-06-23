@@ -3,32 +3,33 @@
 <head th:fragment="commonHead(title)">
     <meta charset="UTF-8"/>
     <title th:text="${title}">My Site</title>
-    <!-- 폰트 로드 -->
+
+    <!-- ✅ Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet"/>
 
-    <!-- Bootstrap CSS -->
+    <!-- ✅ Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <!-- 커스텀 CSS (부트스트랩 이후에 꼭 불러오기) -->
+    <!-- ✅ Custom CSS -->
     <link rel="stylesheet" href="/css/pink.css"/>
 </head>
-<body class="custom-body">
 
-<!-- ✅ 네브바 프래그먼트 -->
+<!-- ✅ 네비게이션 바 Fragment -->
 <nav th:fragment="navbar" class="navbar shadow-sm mb-4">
     <div class="container">
+
         <!-- 로고 -->
         <a class="navbar-brand" th:href="@{/}">🏠 MySite</a>
 
-        <!-- 🍔 이모지 햄버거 버튼 -->
+        <!-- 🍔 햄버거 버튼 -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarContent" aria-controls="navbarContent"
                 aria-expanded="false" aria-label="Toggle navigation">🍔
         </button>
 
-        <!-- 햄버거 눌렀을 때 나오는 메뉴 -->
+        <!-- 네비게이션 메뉴 -->
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto mb-2">
                 <li class="nav-item">
@@ -48,15 +49,17 @@
     </div>
 </nav>
 
-<!-- ✅ 공통 JS -->
+<!-- ✅ 공통 JS Fragment -->
 <th:block th:fragment="commonScript">
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
             integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
             crossorigin="anonymous"></script>
-    <!-- 자동 모달 실행 스크립트 -->
+
+    <!-- 🔔 알림 모달 자동 실행 -->
     <script th:inline="javascript">
         /*<![CDATA[*/
         let hasAlert = /*[[${alert != null}]]*/ false;
@@ -67,5 +70,3 @@
         /*]]>*/
     </script>
 </th:block>
-</body>
-</html>

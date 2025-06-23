@@ -5,34 +5,48 @@
     <title>Title</title>
 </head>
 <body class="custom-body">
+
+<!-- ✅ 네비게이션 바 -->
 <div th:replace="~{fragments/main :: navbar}"></div>
-<!--.container>.row.justify-content-center>.col.col-lg-6>h1.mb-3{회원 목록}-->
+
+<!-- ✅ 회원 목록 섹션 -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col col-lg-6">
-            <h1 class="mb-3">👥 회원 목록</h1>
-            <!--table>thead>tr>th*2^^tbody>tr>td*2-->
-            <table class="table table-hover rounded shadow-sm">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">NICK NAME</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="member : ${memberList}" style="cursor: pointer;">
-                    <td>
-                        <a th:href="@{/member/detail(id=${member.id})}" th:text="${member.id}"></a>
-                    </td>
-                    <td th:text="${member.nickName}"></td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-8">
+            <div class="content-box">
+                <h1 class="mb-3">👥 회원 목록</h1>
+                <p class="mb-4" style="color:#80004d; font-weight: 500;">
+                    전체 회원 정보를 아래 표에서 확인할 수 있어요.
+                    <br/>
+                    아이디를 클릭하면 상세 페이지로 이동합니다.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-center" scope="col">아이디</th>
+                            <th class="text-center" scope="col">별명</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="member : ${memberList}">
+                            <td class="text-center">
+                                <a th:href="@{/member/detail(id=${member.id})}"
+                                   th:text="${member.id}"></a>
+                            </td>
+                            <td class="text-center" th:text="${member.nickName}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- 공통 스크립트 불러오기 -->
+<!-- 📘 공통 스크립트 -->
 <th:block th:replace="~{fragments/main::commonScript}"/>
+
 </body>
 </html>

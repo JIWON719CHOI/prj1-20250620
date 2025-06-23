@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/main :: commonHead('📝' + ${board.id} + '번 게시물 수정')}">
+<head th:replace="~{fragments/main :: commonHead('📝 ' + ${board.id} + '번 게시물 수정')}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>📝 게시물 수정</title>
 </head>
 <body class="custom-body">
+
+<!-- ✅ 네비게이션 바 -->
 <div th:replace="~{fragments/main :: navbar}"></div>
 
-<h1>📝 게시물 수정</h1>
-<form th:action="@{/board/edit}" method="post">
-    <!-- ✅ 게시물 ID 숨겨서 전달 -->
-    <input type="hidden" name="id" th:value="${board.id}"/>
+<!-- ✅ 게시물 수정 섹션 -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="content-box">
+                <h1 class="mb-4">📝 게시물 수정</h1>
 
-    <div class="mb-3">
-        <label>제목</label>
-        <input class="form-control" type="text" name="title" th:value="${board.title}"/>
+                <form th:action="@{/board/edit}" method="post">
+
+                    <!-- ✅ 게시물 ID (숨김) -->
+                    <input type="hidden" name="id" th:value="${board.id}"/>
+
+                    <!-- 제목 -->
+                    <div class="form-group">
+                        <label class="form-label" for="title">제목</label>
+                        <input class="form-control" type="text" id="title" name="title" th:value="${board.title}"
+                               placeholder="제목을 입력하세요"/>
+                    </div>
+
+                    <!-- 본문 -->
+                    <div class="form-group">
+                        <label class="form-label" for="content">본문</label>
+                        <textarea class="form-control" id="content" name="content" rows="10" placeholder="내용을 입력하세요"
+                                  th:text="${board.content}"></textarea>
+                    </div>
+
+                    <!-- 작성자 -->
+                    <div class="form-group">
+                        <label class="form-label" for="writer">작성자</label>
+                        <input class="form-control" type="text" id="writer" name="writer" th:value="${board.writer}"
+                               placeholder="작성자 이름"/>
+                    </div>
+
+                    <!-- 저장 버튼 -->
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn-custom">💾 저장하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label>본문</label>
-        <textarea class="form-control" name="content" rows="10" cols="50"
-                  th:text="${board.content}"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label>작성자</label>
-        <input class="form-control" type="text" name="writer" th:value="${board.writer}"/>
-    </div>
-
-    <div>
-        <button class="btn-custom">💾 저장하기</button>
-    </div>
-</form>
-
-<!-- 공통 스크립트 불러오기 -->
+<!-- 📘 공통 스크립트 -->
 <th:block th:replace="~{fragments/main::commonScript}"/>
 </body>
 </html>
