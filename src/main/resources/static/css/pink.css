@@ -2,7 +2,7 @@
 /* ✅ 전체 페이지 기본 설정 */
 /* ============================= */
 body.custom-body {
-    background-color: #fff0f5; /* 연한 핑크 배경 */
+    background-color: #fadde2; /* 연한 핑크 배경 */
     color: #4a004a; /* 진한 보라 텍스트 */
     font-family: 'Hi Melody', cursive, sans-serif !important;
     padding: 30px 16px;
@@ -117,7 +117,7 @@ select:focus {
 /* ============================= */
 /* ✅ 버튼 스타일 */
 /* ============================= */
-.btn-pink {
+.btn-custom {
     background: linear-gradient(to right, #ffe4ec, #fff0f5);
     box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
     color: #d63384 !important;
@@ -130,7 +130,7 @@ select:focus {
     cursor: pointer;
 }
 
-.btn-pink:hover {
+.btn-custom:hover {
     background: linear-gradient(to right, #ff69b4, #ffb6c1) !important; /* 핫핑크~라이트핑크 */
     color: white !important;
     box-shadow: 0 6px 14px rgba(255, 105, 180, 0.6) !important;
@@ -138,17 +138,17 @@ select:focus {
     transform: translateY(-1px);
 }
 
-.btn-pink:active {
+.btn-custom:active {
     transform: translateY(1px);
     box-shadow: 0 2px 6px rgba(255, 105, 180, 0.4);
 }
 
-a.btn-pink {
+a.btn-custom {
     text-decoration: none; /* 밑줄 제거 */
     display: inline-block; /* 버튼처럼 보이게 */
 }
 
-a.btn-pink:hover {
+a.btn-custom:hover {
     text-decoration: none;
 }
 
@@ -231,7 +231,7 @@ a.btn-pink:hover {
 /* ✅ 공통 transition 설정 (필요 시 추가) */
 /* ============================= */
 .navbar-nav .nav-link,
-.btn-pink,
+.btn-custom,
 .table td a {
     transition: color 0.3s ease, background-color 0.3s ease;
 }

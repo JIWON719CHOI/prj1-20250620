@@ -32,3 +32,7 @@ CREATE TABLE member
     CONSTRAINT pk_member PRIMARY KEY (id)
 );
 
+ALTER TABLE member
+    MODIFY created_at DATETIME DEFAULT NOW();
+
+

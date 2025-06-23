@@ -1,6 +1,8 @@
 package com.example.prj1.member.service;
 
+import com.example.prj1.member.dto.MemberDto;
 import com.example.prj1.member.dto.MemberForm;
+import com.example.prj1.member.dto.MemberListInfo;
 import com.example.prj1.member.entity.Member;
 import com.example.prj1.member.repo.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +10,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -39,6 +43,65 @@ public class MemberService {
         } else {
             throw new DuplicateKeyException(data.getId() + "는 이미 있는 아이디입니다.");
         }
+    }
 
+    public List<MemberListInfo> list() {
+        return memberRepository.findAllBy();
+    }
+
+    public MemberDto get(String id) {
+        Member member = memberRepository.findById(id).get();
+        MemberDto dto = new MemberDto();
+        dto.setId(member.getId());
+        dto.setNickName(member.getNickName());
+        dto.setInfo(member.getInfo());
+        dto.setCreatedAt(member.getCreatedAt());
+        return dto;
+
+    }
+
+    public boolean remove(MemberForm data) {
+        Member member = memberRepository.findById(data.getId()).get();
+
+        String dbPw = member.getPassword();
+        String formPw = data.getPassword();
+
+        if (dbPw.equals(formPw)) {
+            memberRepository.delete(member);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean update(MemberForm data) {
+        // 조회
+        Member member = memberRepository.findById(data.getId()).get();
+
+        String dbPw = member.getPassword();
+        String formPw = data.getPassword();
+
+        if (dbPw.equals(formPw)) {
+            // 변경
+            member.setNickName(data.getNickName());
+            member.setInfo(data.getInfo());
+            // 저장
+            memberRepository.save(member);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean changePassword(String id, String oldPw, String newPw) {
+        Member m = memberRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("회원이 없습니다."));
+        if (!m.getPassword().equals(oldPw)) {
+            return false;
+        }
+        m.setPassword(newPw);
+        memberRepository.save(m);
+        return true;
     }
 }

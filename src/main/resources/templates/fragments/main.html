@@ -25,8 +25,7 @@
         <!-- 🍔 이모지 햄버거 버튼 -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarContent" aria-controls="navbarContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            🍔
+                aria-expanded="false" aria-label="Toggle navigation">🍔
         </button>
 
         <!-- 햄버거 눌렀을 때 나오는 메뉴 -->
@@ -40,6 +39,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/member/signup}">👤 회원 가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/member/list}">👥 회원 목록</a>
                 </li>
             </ul>
         </div>
@@ -63,19 +65,6 @@
             modal.show();
         }
         /*]]>*/
-    </script>
-    <!--유효성 검사 스크립트-->
-    <script>
-        document.getElementById("writeForm").addEventListener("submit", function (e) {
-            const title = this.title.value.trim();
-            const writer = this.writer.value.trim();
-            const content = this.content.value.trim();
-
-            if (!title || !writer || !content) {
-                e.preventDefault(); // 서버 전송 막기
-                alert("모든 필드를 입력해주세요!");
-            }
-        });
     </script>
 </th:block>
 </body>

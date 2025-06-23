@@ -27,15 +27,13 @@
     </div>
 
     <div>
-        <button class="btn-pink">💾 저장하기</button>
+        <button class="btn-custom">💾 저장하기</button>
     </div>
 </form>
-<!-- 에러 메시지 표시 (선택) -->
-<div th:if="${errors != null}">
-    <ul>
-        <li th:each="e : ${errors}" th:text="${e.defaultMessage}" class="text-danger"></li>
-    </ul>
-</div>
+<!-- 🔔 알림 모달 -->
+<th:block th:if="${alert != null}">
+    <div th:replace="~{fragments/alert-modal :: alertModal}"></div>
+</th:block>
 <!-- 공통 스크립트 불러오기 -->
 <th:block th:replace="~{fragments/main::commonScript}"/>
 </body>
