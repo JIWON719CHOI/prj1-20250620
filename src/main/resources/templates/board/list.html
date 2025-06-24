@@ -49,7 +49,9 @@
                                    th:text="${board.title}"></a>
                             </td>
                             <td class="text-center"
-                                th:text="${board.writer != null ? board.writer.nickName : '익명'}"></td>
+                                th:text="|${board.writerNickName}${board.writerId == null ? ' (탈퇴)' : ''}|">
+                            </td>
+
                             <td class="text-center" th:text="${board.createdAt}"></td>
                         </tr>
                         </tbody>

@@ -11,4 +11,6 @@ public class MemberDto {
     private String info;
     private LocalDateTime createdAt;
 
+    private String role;
+
 }

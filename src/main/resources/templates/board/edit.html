@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/main :: commonHead('📝 ' + ${board.id} + '번 게시물 수정')}">
+<head th:replace="~{fragments/main :: commonHead(title=${'📝 게시물 수정'})}">
     <meta charset="UTF-8">
     <title>📝 게시물 수정</title>
 </head>
@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label class="form-label" for="writer">작성자</label>
                         <input class="form-control" type="text" id="writer" name="writer" th:value="${board.writer}"
-                               placeholder="작성자 이름"/>
+                               readonly/>
                     </div>
 
                     <!-- 저장 버튼 -->

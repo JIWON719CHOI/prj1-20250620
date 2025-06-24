@@ -23,6 +23,9 @@ public class Member {
     private String nickName;
     private String info;
 
+    @Column(nullable = false)
+    private String role;  // ex) "USER", "ADMIN"
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 }

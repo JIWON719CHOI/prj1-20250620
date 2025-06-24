@@ -11,11 +11,12 @@ import java.time.LocalDateTime;
  */
 //@Value
 @Data
-public class BoardDto implements Serializable {
+public class BoardDto {
     private Integer id;
     private String title;
     private String content;
-    private String writer;    // 닉네임
-    private String writerId; // 작성자 id 추가
+    private String writerNickName; // 보존용 텍스트
+    private String writerId;       // 실제 회원 id, 탈퇴하면 null
     private LocalDateTime createdAt;
 }
+

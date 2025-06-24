@@ -9,18 +9,21 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "board")
 @Getter
 @Setter
 @ToString
-@Table(name = "board") // 사실 생략해도 만들어지긴 함.
 public class Board {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String title;
     private String content;
+
+    @Column(name = "writer_nick_name", nullable = false)
+    private String writerNickName;
+
     @ManyToOne
     @JoinColumn(name = "writer_id", nullable = true)
     private Member writer;
