@@ -55,17 +55,21 @@ public class MemberController {
     }
 
     @PostMapping("remove")
-    public String remove(MemberForm data, RedirectAttributes rttr) {
+    public String remove(MemberForm data,
+                         HttpSession session,
+                         RedirectAttributes rttr) {
         boolean result = memberService.remove(data);
         if (result) {
-            rttr.addFlashAttribute("alert", Map.of("code", "danger", "message", data.getId() + "님 탈퇴 되었습니다."));
-            return "redirect:/board/list";
+            session.invalidate(); // 💡 자동 로그아웃
+            rttr.addFlashAttribute("alert", Map.of("code", "info", "message", "회원 탈퇴가 완료되었습니다."));
+            return "redirect:/member/login"; // 로그인 페이지로 이동
         } else {
-            rttr.addFlashAttribute("alert", Map.of("code", "danger", "message", "암호가 일치하지 않습니다."));
+            rttr.addFlashAttribute("alert", Map.of("code", "warning", "message", "비밀번호가 틀렸습니다."));
             rttr.addAttribute("id", data.getId());
             return "redirect:/member/detail";
         }
     }
+
 
     @GetMapping("edit")
     public String edit(@RequestParam(required = false) String id, Model model, RedirectAttributes rttr) {

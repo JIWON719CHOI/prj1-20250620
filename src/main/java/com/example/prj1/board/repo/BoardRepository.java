@@ -6,5 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BoardRepository extends JpaRepository<Board, Integer> {
-    Page<Board> findByTitleContaining(String keyword, Pageable pageable);
+    // 제목 + 작성자 닉네임으로 검색
+    Page<Board> findByTitleContainingOrWriter_NickNameContaining(String titleKeyword, String writerKeyword, Pageable pageable);
 }

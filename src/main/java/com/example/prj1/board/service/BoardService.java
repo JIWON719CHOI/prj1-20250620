@@ -39,7 +39,8 @@ public class BoardService {
     }
 
     public Map<String, Object> getListPage(Integer page, String keyword) {
-        Page<Board> pageResult = boardRepository.findByTitleContaining(keyword,
+        Page<Board> pageResult = boardRepository.findByTitleContainingOrWriter_NickNameContaining(
+                keyword, keyword,
                 PageRequest.of(page - 1, 50, Sort.by("id").descending()));
 
         int currentPage = page;
@@ -62,6 +63,7 @@ public class BoardService {
 
         return result;
     }
+
 
     public BoardDto get(Integer id) {
         Board board = boardRepository.findById(id)
@@ -115,7 +117,7 @@ public class BoardService {
         dto.setTitle(board.getTitle());
         dto.setContent(board.getContent());
         dto.setWriterId(board.getWriter() != null ? board.getWriter().getId() : null);
-        dto.setWriter(board.getWriter() != null ? board.getWriter().getNickName() : "알 수 없음");
+        dto.setWriter(board.getWriter() != null ? board.getWriter().getNickName() : "탈퇴한 사용자");
         dto.setCreatedAt(board.getCreatedAt());
         return dto;
     }
