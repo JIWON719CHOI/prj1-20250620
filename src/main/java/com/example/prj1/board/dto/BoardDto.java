@@ -12,9 +12,10 @@ import java.time.LocalDateTime;
 //@Value
 @Data
 public class BoardDto implements Serializable {
-    Integer id;
-    String title;
-    String content;
-    String writer;
-    LocalDateTime createdAt;
+    private Integer id;
+    private String title;
+    private String content;
+    private String writer;    // 닉네임
+    private String writerId; // 작성자 id 추가
+    private LocalDateTime createdAt;
 }

@@ -12,6 +12,6 @@ public class BoardForm {
     private String title;
     @NotBlank(message = "내용을 입력해주세요.")
     private String content;
-    @NotBlank(message = "작성자 입력이 필요합니다.")
-    private String writer;
+//    @NotBlank(message = "작성자 입력이 필요합니다.")
+//    private String writer;
 }

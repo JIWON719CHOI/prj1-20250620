@@ -17,35 +17,65 @@
 </head>
 
 <!-- ✅ 네비게이션 바 Fragment -->
-<nav th:fragment="navbar" class="navbar shadow-sm mb-4">
-    <div class="container">
+<nav th:fragment="navbar(current)" class="navbar shadow-sm mb-4 bg-light">
+    <div class="container d-flex justify-content-between align-items-center">
 
-        <!-- 로고 -->
-        <a class="navbar-brand" th:href="@{/}">🏠 MySite</a>
+        <!-- ✅ 왼쪽: 로고 -->
+        <a class="navbar-brand" th:href="@{/}">🏠 HOME</a>
 
-        <!-- 🍔 햄버거 버튼 -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarContent" aria-controls="navbarContent"
-                aria-expanded="false" aria-label="Toggle navigation">🍔
-        </button>
-
-        <!-- 네비게이션 메뉴 -->
-        <div class="collapse navbar-collapse" id="navbarContent">
-            <ul class="navbar-nav ms-auto mb-2">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/board/list}">🎀 게시판 목록</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/board/write}">📝 게시물 작성</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/member/signup}">👤 회원 가입</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/member/list}">👥 회원 목록</a>
-                </li>
-            </ul>
+        <!-- ✅ 오른쪽: 햄버거 버튼 + 드롭다운 같이 묶기 -->
+        <div class="d-flex align-items-center gap-2">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarContent" aria-controls="navbarContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                🍔
+            </button>
+            <div class="dropdown">
+                <button class="btn btn-link nav-link dropdown-toggle" type="button"
+                        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    👤
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li th:if="${session.loggedInUser != null}">
+                        <a class="dropdown-item"
+                           th:href="@{/member/detail(id=${session.loggedInUser.id})}">
+                            🙋‍♀️
+                            <span th:text="${session.loggedInUser?.nickName}">내 정보</span>
+                        </a>
+                    </li>
+                    <li th:if="${session.loggedInUser != null}">
+                        <a class="dropdown-item" th:href="@{/member/logout}">🔓 로그아웃</a>
+                    </li>
+                    <li th:if="${session.loggedInUser == null}">
+                        <a class="dropdown-item" th:href="@{/member/login}">🔐 로그인</a>
+                    </li>
+                    <li th:if="${session.loggedInUser == null}">
+                        <a class="dropdown-item" th:href="@{/member/signup}">👤 회원 가입</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </div>
+
+    <!-- ✅ 항상 보이는 접히는 메뉴 -->
+    <div class="collapse" id="navbarContent">
+        <ul class="navbar-nav w-100 justify-content-center gap-3 py-3">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/board/list}"
+                   th:classappend="${current == 'boardList' ? 'active fw-bold' : ''}">🎀 게시판 목록
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/board/write}"
+                   th:classappend="${current == 'boardWrite' ? 'active fw-bold' : ''}">📝 게시물 작성
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/member/list}"
+                   th:classappend="${current == 'memberList' ? 'active fw-bold' : ''}">👥 회원 목록
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
 

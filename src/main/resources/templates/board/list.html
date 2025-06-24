@@ -7,7 +7,7 @@
 <body class="custom-body">
 
 <!-- ✅ 네비게이션 바 -->
-<div th:replace="~{fragments/main :: navbar}"></div>
+<div th:replace="~{fragments/main :: navbar(${'boardList'})}"></div>
 
 <!-- ✅ 게시판 목록 섹션 -->
 <div class="container">
@@ -15,7 +15,6 @@
         <div class="col-lg-10">
             <div class="content-box">
 
-                <!-- 🎀 제목 -->
                 <h1 class="mb-4">🎀 게시판 목록</h1>
 
                 <!-- 🔍 검색 폼 -->
@@ -33,7 +32,7 @@
 
                 <!-- 📔 게시글 목록 테이블 -->
                 <div class="table-responsive">
-                    <table class="table mb-0">
+                    <table class="table table-hover mb-0">
                         <thead>
                         <tr>
                             <th class="text-center">번호</th>
@@ -49,7 +48,8 @@
                                 <a th:href="@{/board/detail(id=${board.id})}"
                                    th:text="${board.title}"></a>
                             </td>
-                            <td class="text-center" th:text="${board.writer}"></td>
+                            <td class="text-center"
+                                th:text="${board.writer != null ? board.writer.nickName : '익명'}"></td>
                             <td class="text-center" th:text="${board.createdAt}"></td>
                         </tr>
                         </tbody>

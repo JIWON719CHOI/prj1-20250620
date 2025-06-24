@@ -7,7 +7,7 @@
 <body class="custom-body">
 
 <!-- ✅ 네비게이션 바 -->
-<div th:replace="~{fragments/main :: navbar}"></div>
+<div th:replace="~{fragments/main :: navbar(_)}"></div>
 
 <!-- ✅ 게시물 수정 섹션 -->
 <div class="container">
@@ -44,7 +44,7 @@
 
                     <!-- 저장 버튼 -->
                     <div class="d-flex gap-2 mt-4">
-                        <button type="submit" class="btn-custom">💾 저장하기</button>
+                        <button type="submit" class="btn-custom">💾 저장</button>
                     </div>
                 </form>
             </div>

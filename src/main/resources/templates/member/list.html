@@ -7,7 +7,7 @@
 <body class="custom-body">
 
 <!-- ✅ 네비게이션 바 -->
-<div th:replace="~{fragments/main :: navbar}"></div>
+<div th:replace="~{fragments/main :: navbar('memberList')}"></div>
 
 <!-- ✅ 회원 목록 섹션 -->
 <div class="container">
@@ -17,12 +17,10 @@
                 <h1 class="mb-3">👥 회원 목록</h1>
                 <p class="mb-4" style="color:#80004d; font-weight: 500;">
                     전체 회원 정보를 아래 표에서 확인할 수 있어요.
-                    <br/>
-                    아이디를 클릭하면 상세 페이지로 이동합니다.
                 </p>
 
                 <div class="table-responsive">
-                    <table class="table mb-0">
+                    <table class="table table-hover mb-0">
                         <thead>
                         <tr>
                             <th class="text-center" scope="col">아이디</th>

@@ -35,4 +35,21 @@ CREATE TABLE member
 ALTER TABLE member
     MODIFY created_at DATETIME DEFAULT NOW();
 
+# 회원만 글을 작성할 수 있으므로, board.writer를 member.id로 수정
+
+UPDATE board
+SET writer = 'Geto'
+WHERE id % 2 = 1;
+
+UPDATE board
+SET writer = 'Gojo'
+WHERE id % 2 = 0;
+
+# 외래키 제약 사항 추가
+ALTER TABLE board
+    ADD FOREIGN KEY (writer) REFERENCES member (id);
+
+ALTER TABLE board
+    MODIFY writer VARCHAR(100) NOT NULL;
+
 
