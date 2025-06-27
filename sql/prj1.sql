@@ -121,6 +121,8 @@ ALTER TABLE board
 
 SHOW CREATE TABLE board;
 
+SHOW CREATE TABLE member;
+
 
 
 
